@@ -1,5 +1,9 @@
 let stopflights = 0;
 
+const spaceCraft = document.querySelectorAll(".spaceCraft");
+const canon = document.querySelector("#canon_container > div");
+
+
 const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
 {
     let FLY_DURATION=0 
@@ -35,6 +39,35 @@ const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
         
      
     }, 1000);
+    
+        document.addEventListener("keydown",(event)=>
+        {
+
+        if(event.key ===" ")
+        {
+            let count=0;
+
+            const math= 60 -  FLY_DURATION 
+            
+            const newmath=math*9
+            console.log(math)
+
+            
+
+            const canonclock=setInterval(() => {
+                canon.style.bottom= `${count+=10}px`;
+                
+                if(count>=newmath)
+                {
+                    clearInterval(canonclock);
+                    clearInterval(flySpaceCraft1);
+                }
+            }, 100);
+                
+            
+        }
+        })
+
     
 
 }
@@ -105,14 +138,14 @@ const flightSpeed = [1,2,3,4,5,6];
         
     })
  
-    document.addEventListener("keydown",(event)=>
+   /* document.addEventListener("keydown",(event)=>
     {
-        //alert(event.keyCode);
-       // alert(event.key);
 
-       if(event.key ===" ")//Event lister on the space par
+       if(event.key ===" ")
        {
           let count=0;
+
+          clearInterval(flySpaceCraft1);
 
           setInterval(() => {
             canon.style.bottom= `${count+=10}px`; 
@@ -120,8 +153,7 @@ const flightSpeed = [1,2,3,4,5,6];
             
         
        }
-    }
-    )
+    })*/
 
 
 
