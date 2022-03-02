@@ -112,7 +112,7 @@ main
 
 }
 
-#canon_container > div
+#canon_container > div 
 {
     width:20%;
     height:40%;
@@ -120,7 +120,7 @@ main
     align-self: center;
     position: absolute;
     z-index: 10;
-   
+    
 }
 
 .SpaceShipImg
@@ -138,3 +138,17 @@ main
  
     align-self: center;
 }
+
+.bullet
+{
+    width:30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 15px 15px;
+    text-align: center;
+    align-self: center;
+    position: absolute;
+    z-index: 10;
+
+}
+    

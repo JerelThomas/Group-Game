@@ -4,22 +4,22 @@ const spaceCraft = document.querySelectorAll(".spaceCraft");
 const canon = document.querySelector("#canon_container > div");
 
 
+const StopSpaceShips=(flySpaceCraft)=>
+        {
+            clearInterval(flySpaceCraft);
+        }
+ 
 const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
 {
     let FLY_DURATION=0 
 
-    const flySpaceCraft1 = setInterval(() => 
+    const flySpaceCraft1 = setInterval(() =>
     {
+        /*console.log(`Current Flight Speed :${flightSpeed}, Current Duration: ${FLY_DURATION}, Current Ship id: ${shipid}, Stopflight value ${stopflights}`);*/
         
-       
-
-        console.log(`Current Flight Speed :${flightSpeed}, Current Duration: ${FLY_DURATION}, Current Ship id: ${shipid}, Stopflight value ${stopflights}`);
-        
-         
-
             if(stopflights >= 60)
             {
-                clearInterval(flySpaceCraft1);
+                StopSpaceShips(flySpaceCraft1);
               
             }
             else
@@ -35,42 +35,13 @@ const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
         
         const spaceshipduration=spaceship.style.marginTop = `${FLY_DURATION}vh`;
     
-   
-        
-     
     }, 1000);
-    
-        document.addEventListener("keydown",(event)=>
-        {
-
-        if(event.key ===" ")
-        {
-            let count=0;
-
-            const math= 60 -  FLY_DURATION 
-            
-            const newmath=math*9
-            console.log(math)
-
-            
-
-            const canonclock=setInterval(() => {
-                canon.style.bottom= `${count+=10}px`;
-                
-                if(count>=newmath)
-                {
-                    clearInterval(canonclock);
-                    clearInterval(flySpaceCraft1);
-                }
-            }, 100);
-                
-            
-        }
-        })
-
-    
-
+    return flySpaceCraft1;
 }
+
+
+
+
 
 const main = (()=>
 {
@@ -88,19 +59,19 @@ let spaceCraft5 = spaceCraft[4];
 const flightSpeed = [1,2,3,4,5,6];
 
     let random = Math.floor(Math.random()*5);
-    flyspaceCraft(spaceCraft1,flightSpeed[random],"101");
+    let ShipEntity1=flyspaceCraft(spaceCraft1,flightSpeed[random],"101");
 
     random = Math.floor(Math.random()*5);
-    flyspaceCraft(spaceCraft2,flightSpeed[random],"102");
+    let ShipEntity2=flyspaceCraft(spaceCraft2,flightSpeed[random],"102");
 
     random = Math.floor(Math.random()*5);
-    flyspaceCraft(spaceCraft3,flightSpeed[random],"103");
+    let ShipEntity3=flyspaceCraft(spaceCraft3,flightSpeed[random],"103");
 
     random = Math.floor(Math.random()*5);
-    flyspaceCraft(spaceCraft4,flightSpeed[random],"104");
+    let ShipEntity4=flyspaceCraft(spaceCraft4,flightSpeed[random],"104");
 
     random = Math.floor(Math.random()*5);
-    flyspaceCraft(spaceCraft5,flightSpeed[random],"105");
+    let ShipEntity5=flyspaceCraft(spaceCraft5,flightSpeed[random],"105");
 
     let margin = 0;
     let count=0
@@ -137,23 +108,55 @@ const flightSpeed = [1,2,3,4,5,6];
         }
         
     })
+
+    let Move=0;
  
-   /* document.addEventListener("keydown",(event)=>
+    document.addEventListener("keydown",(event)=>
     {
+        
+        if(event.key ===" ")
+        {   
+       
+            const canonclock=setInterval(() => 
+            {   
+                const Luanch = document.querySelector("#canon_container > div > div");
 
-       if(event.key ===" ")
-       {
-          let count=0;
+                Luanch.innerHTML = "<img src='./img/shipnnew.png' class='bullet' class='cannonimg'>";
 
-          clearInterval(flySpaceCraft1);
+                const bullet = document.querySelector(".bullet");
 
-          setInterval(() => {
-            canon.style.bottom= `${count+=10}px`; 
-          }, 100);
+                const SpaceShipLocation = spaceCraft[count].getBoundingClientRect();
+
+                bullet.style.bottom= `${Move+=10}px`;
+
+                const BulletPosition = bullet.getBoundingClientRect();
+                
+                const TravelDistanceUpdate= BulletPosition.bottom-SpaceShipLocation.bottom;
+                
+                
+
+                console.log(TravelDistanceUpdate)
+
+                if(TravelDistanceUpdate<=0)
+            {
+                clearInterval(canonclock);
+
+                StopSpaceShips(ShipEntity1);
+                StopSpaceShips(ShipEntity2);
+                StopSpaceShips(ShipEntity3);
+                StopSpaceShips(ShipEntity4);
+                StopSpaceShips(ShipEntity5);
+            
+            }
+            }, 100);
+
+        }
+        
             
         
-       }
-    })*/
+    })
+    
+
 
 
 
