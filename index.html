@@ -10,8 +10,49 @@
 </head>
 <body  id="BackGroundMain">
 
+    <section id ="WelcomeName"class="gridAlign" >
+
+        <div id="PlayNameSection">
+
+                <form action="" method="post">
+
+                    <label for="name"> Player Name</label> <br>
+
+                    <input type="text" id="name"> <br>
+
+                    <button type="button" id="NameButtonNext">NEXT</button>
+
+                </form>
+    
+        </div>
+
+
+    </section>
+
+    <section id="RulesPlay" class=" hide">
+
+        <div>
+            <h1>ALIEN ADDITTION</h1> <br>
+
+            <img src="" alt=""><br>
+
+            <button type="button" id="PlayButton">PLAY</button>
+            <button type="button" id="RulesButton">RULES</button>
+
+
+        </div>
+
+        <div class="hide rulesbook">
+           <button> X </button>
+        </div>
+
+    </section>
+
+    <section id="GameRules" class="hide">
+
+    </section>
     <!---->
-    <main>
+    <main class="hide">
 
          <section id="alien_container"> 
             <div class="runway">
@@ -47,14 +88,19 @@
         </section>
         <section id="canon_container">
             <div>
-                <div>
                     
-                </div>
-                <img src="./img/shipnnew.png" alt="" class="cannonimg">
             </div>
+
+            <div>
+               <img src="./img/shipnnew.png" alt="" class="cannonimg">
+            </div>
+
+          
 
         </section>
     </main>
+
+
     <script src="js/app.js"></script>
 </body>
 </html>

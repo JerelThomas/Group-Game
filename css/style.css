@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+.hide
+{
+    display: none;
+}
+
+
 #BackGroundMain
 {
     background-image: url(../img/newspace.jpg) ;
@@ -27,6 +33,78 @@ body
     grid-template-columns: 1fr;
 }
 
+/* First Screen Captures Name*/
+#WelcomeName
+{
+    width:70%;
+    height: 80vh;
+    justify-self: center;
+    align-self: center;
+    background-color: tomato;
+   
+
+}
+.gridAlign
+{
+    display:grid;
+    grid-template-columns: 1fr;
+}
+#WelcomeName > div
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    width:60%;
+    height:60%;
+    background-color: aqua;
+    justify-self: center;
+    align-self: center;
+    
+    
+}
+
+#WelcomeName > div > form
+{
+    justify-self: center;
+    align-self: center;
+    background-color: hotpink; 
+    padding: 50px 50px;
+}
+
+
+/* Second Screen Play Game*/
+#RulesPlay
+{
+    width:70%;
+    height: 80vh;
+    justify-self: center;
+    align-self: center;
+    background-color: navy;
+    position: relative;
+
+  
+}
+
+#RulesPlay > div
+{
+    width:60%;
+    height:60%;
+    background-color: aqua;
+    justify-self: center;
+    align-self: center;  
+    text-align: center;
+}
+
+
+.rulesbook
+{
+    position: absolute;
+    width:70%;
+    height: 80vh;
+    background-color: red;
+
+}
+
+
 /* Main Container Section*/
 
 main
@@ -35,7 +113,8 @@ main
     height: 80vh;
     justify-self: center;
     align-self: center;
-    position: relative;
+  
+ 
 }
 
 /* Alien container Section */
@@ -107,21 +186,30 @@ main
     background-color: darkgoldenrod;
     display: grid;
     grid-template-columns: 1fr;
-    position:relative;
-    z-index: 5;
+ 
 
 }
 
-#canon_container > div 
+#canon_container > div:nth-child(2) 
 {
     width:20%;
     height:40%;
     text-align: center;
     align-self: center;
-    position: absolute;
-    z-index: 10;
     
 }
+
+
+#canon_container > div:nth-child(1)
+{
+    display: grid;
+    grid-template-columns: 1fr; 
+    width:20%;
+    height:40%;
+    position: relative;
+} 
+
+
 
 .SpaceShipImg
 {
@@ -143,12 +231,12 @@ main
 {
     width:30px;
     height: 30px;
-    background-color: black;
     border-radius: 15px 15px;
     text-align: center;
     align-self: center;
+    justify-self: center;
     position: absolute;
-    z-index: 10;
+  
 
 }
     

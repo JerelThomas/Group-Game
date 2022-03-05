@@ -4,27 +4,25 @@ const spaceCraft = document.querySelectorAll(".spaceCraft");
 const canon = document.querySelector("#canon_container > div");
 
 
+
 const StopSpaceShips=(flySpaceCraft)=>
-        {
-            clearInterval(flySpaceCraft);
-        }
+{
+    clearInterval(flySpaceCraft); 
+}
  
-const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
+const flyspaceCraft = (spaceship,flightSpeed)=>
 {
     let FLY_DURATION=0 
-
+  
     const flySpaceCraft1 = setInterval(() =>
     {
-        /*console.log(`Current Flight Speed :${flightSpeed}, Current Duration: ${FLY_DURATION}, Current Ship id: ${shipid}, Stopflight value ${stopflights}`);*/
-        
+            
             if(stopflights >= 60)
             {
-                StopSpaceShips(flySpaceCraft1);
-              
+                StopSpaceShips(flySpaceCraft1); 
             }
             else
-            {
-                
+            {   
                 FLY_DURATION += flightSpeed;
 
                 if(stopflights < FLY_DURATION)
@@ -33,7 +31,7 @@ const flyspaceCraft = (spaceship,flightSpeed,shipid)=>
                 }
             }
         
-        const spaceshipduration=spaceship.style.marginTop = `${FLY_DURATION}vh`;
+        spaceship.style.marginTop = `${FLY_DURATION}vh`;
     
     }, 1000);
     return flySpaceCraft1;
@@ -47,7 +45,9 @@ const main = (()=>
 {
 //Declaration of Variables
 const spaceCraft = document.querySelectorAll(".spaceCraft");
-const canon = document.querySelector("#canon_container > div");
+const canon = document.querySelector("#canon_container > div:nth-child(2)");
+const Luanch = document.querySelector("#canon_container > div:nth-child(1) ");
+
 let spaceCraft1 = spaceCraft[0];
 let spaceCraft2 = spaceCraft[1];
 let spaceCraft3 = spaceCraft[2];
@@ -59,22 +59,23 @@ let spaceCraft5 = spaceCraft[4];
 const flightSpeed = [1,2,3,4,5,6];
 
     let random = Math.floor(Math.random()*5);
-    let ShipEntity1=flyspaceCraft(spaceCraft1,flightSpeed[random],"101");
+    let ShipEntity1=flyspaceCraft(spaceCraft1,flightSpeed[random]);
 
     random = Math.floor(Math.random()*5);
-    let ShipEntity2=flyspaceCraft(spaceCraft2,flightSpeed[random],"102");
+    let ShipEntity2=flyspaceCraft(spaceCraft2,flightSpeed[random]);
 
     random = Math.floor(Math.random()*5);
-    let ShipEntity3=flyspaceCraft(spaceCraft3,flightSpeed[random],"103");
+    let ShipEntity3=flyspaceCraft(spaceCraft3,flightSpeed[random]);
 
     random = Math.floor(Math.random()*5);
-    let ShipEntity4=flyspaceCraft(spaceCraft4,flightSpeed[random],"104");
+    let ShipEntity4=flyspaceCraft(spaceCraft4,flightSpeed[random]);
 
     random = Math.floor(Math.random()*5);
-    let ShipEntity5=flyspaceCraft(spaceCraft5,flightSpeed[random],"105");
+    let ShipEntity5=flyspaceCraft(spaceCraft5,flightSpeed[random]);
 
     let margin = 0;
     let count=0
+    let luanch_flag= false;
 
     document.addEventListener("keydown",(event)=>{
         
@@ -88,6 +89,11 @@ const flightSpeed = [1,2,3,4,5,6];
             count--;
             canon.style.marginLeft = `${margin}%`
 
+            if(luanch_flag===false)
+            {
+                Luanch.style.marginLeft = `${margin}%`;
+            }
+            
             }
             console.log(`${count}`)
            
@@ -101,7 +107,13 @@ const flightSpeed = [1,2,3,4,5,6];
 
             margin = margin + 20.5;
            
-            canon.style.marginLeft = `${margin}%`
+            canon.style.marginLeft = `${margin}%`;
+
+            if(luanch_flag===false)
+            {
+                Luanch.style.marginLeft = `${margin}%`;
+            }
+            
 
             }
 
@@ -116,10 +128,12 @@ const flightSpeed = [1,2,3,4,5,6];
         
         if(event.key ===" ")
         {   
+
+            luanch_flag= true; 
        
             const canonclock=setInterval(() => 
             {   
-                const Luanch = document.querySelector("#canon_container > div > div");
+               
 
                 Luanch.innerHTML = "<img src='./img/shipnnew.png' class='bullet' class='cannonimg'>";
 
@@ -151,14 +165,50 @@ const flightSpeed = [1,2,3,4,5,6];
             }, 100);
 
         }
-        
-            
+    
         
     })
+
+    const PlayerName=document.querySelector("#name");
+    const WelcomeScreen = document.querySelector("#WelcomeName")
+    const PlayScreen = document.querySelector("#RulesPlay");
+    const NextButtonName=document.querySelector("#NameButtonNext");
+
+    NextButtonName.addEventListener("click",()=>
+    {
+        WelcomeScreen.classList.add("hide");
+        WelcomeScreen.classList.remove("gridAlign");
+
+        PlayScreen.classList.remove("hide");
+        PlayScreen.classList.add("gridAlign")
+    });
+
+    const PlayButton=document.querySelector("#PlayButton");
+
+    const RulesButton=document.querySelector("#RulesButton");
+    const mainScreen = document.querySelector("main");
+    const GameRules = document.querySelector("GameRules");
+    const rulesContainer = document.querySelector(".rulesbook")
+
+    const playtheme = new Audio("");
+
+
+    PlayButton.addEventListener("click",()=>
+    {
+
+        PlayScreen.classList.remove("gridAlign");
+        PlayScreen.classList.add("hide")
+
+        mainScreen.classList.remove("hide");
+
+
+    });
+
+    RulesButton.addEventListener("click",()=>
+    {
+       rulesContainer.classList.remove(hide);
+       
+    });
     
-
-
-
-
 
 })();
